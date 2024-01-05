@@ -8,12 +8,15 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <div class="success-msg">
+      ✔ <span class="msg">Item Added successfully</span>
+    </div>
     <!--Navbar  -->
     <header>
       <a href="/">Home</a>
       <div class="right-links">
         <a href="/new-product.html">Add product</a>
-        <a href="/cart.html">View Cart(0)</a>
+        <a href="/cart.html">View Cart(<span id="cartCount">0</span>)</a>
         <a href="/favourites.html">View Favourites(0)</a>
       </div>
     </header>

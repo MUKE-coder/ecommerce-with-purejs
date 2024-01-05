@@ -24,7 +24,7 @@ function renderProducts() {
 }
 renderProducts();
 
-const cartItems = [];
+const cartItems = JSON.parse(localStorage.getItem("cart")) ?? [];
 function addToCart(productId) {
   // Find the product using the productId
   const product = products.find((product) => product.id === productId);
@@ -33,4 +33,27 @@ function addToCart(productId) {
   //Add the cartItems array into localstorage
   localStorage.setItem("cart", JSON.stringify(cartItems));
   console.log(cartItems);
+  //Update the cart Count
+  updateCartCount();
+  //Show Notification
+  showNotification("Item Added successfully");
+}
+
+function updateCartCount() {
+  const cartCountEl = document.getElementById("cartCount");
+  cartCountEl.textContent = cartItems.length;
+}
+updateCartCount();
+console.log(cartItems);
+
+function showNotification(msg) {
+  const msgTextEl = document.querySelector(".msg");
+  const msgEl = document.querySelector(".success-msg");
+  msgEl.style.display = "inline-flex";
+  msgTextEl.textContent = msg;
+  //hide the message after 3s
+
+  setTimeout(() => {
+    msgEl.style.display = "none";
+  }, 2000);
 }
